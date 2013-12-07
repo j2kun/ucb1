@@ -38,7 +38,7 @@ def ucb1(numActions, reward):
 # Test UCB1 using stochastic payoffs for 10 actions.
 def simpleTest():
    numActions = 10
-   numRounds = 1000000
+   numRounds = 1000
 
    biases = [1.0 / k for k in range(5,5+numActions)]
    means = [0.5 + b for b in biases]
@@ -59,14 +59,14 @@ def simpleTest():
       regret = bestActionCumulativeReward - cumulativeReward
       regretBound = 8 * math.log(t + 5) * invDeltaSum + (1 + math.pi*math.pi / 3) * deltaSum
 
-      print("regret: %d\tregretBound: %.2f" % (regret, regretBound))
+      #print("regret: %d\tregretBound: %.2f" % (regret, regretBound))
 
       t += 1
       if t >= numRounds:
          break
 
-   print(cumulativeReward)
+   return cumulativeReward
 
 
 if __name__ == "__main__":
-   simpleTest()
+   print(simpleTest())
